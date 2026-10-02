@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Samar ♡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --pink: #f6b8c9;
+  --rose: #d97998;
+  --lavender: #d8c8f4;
+  --peach: #ffd7bd;
+  --gold: #e8bd75;
+  --cream: #fff9f0;
+  --ink: #65465b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #fff4f5;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+}
+
+#sky {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse at 10% 15%, #ffe1d4 0%, transparent 35%),
+    radial-gradient(ellipse at 90% 15%, #e4d8ff 0%, transparent 38%),
+    radial-gradient(ellipse at 80% 90%, #ffd3df 0%, transparent 40%),
+    linear-gradient(135deg, #fff4ee, #fbe5f0, #eee7ff);
+  animation: skyShift 12s ease-in-out infinite alternate;
+}
+
+@keyframes skyShift {
+  from { filter: hue-rotate(0deg); }
+  to { filter: hue-rotate(15deg); }
+}
+
+#floaties {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.floaty {
+  position: absolute;
+  bottom: -50px;
+  animation: floatUp linear infinite;
+  opacity: .65;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  15% { opacity: .7; }
+  85% { opacity: .7; }
+  100% { transform: translateY(-115vh) rotate(35deg); opacity: 0; }
+}
+
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  animation: twinkle 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .2; transform: scale(.7); }
+  to { opacity: 1; transform: scale(1.2); }
+}
+
+main {
+  width: min(100% - 28px, 680px);
+  margin: auto;
+  padding: 25px 0 50px;
+}
+
+.page {
+  display: none;
+  min-height: 85vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  animation: pageIn .7s ease both;
+}
+
+.page.active {
+  display: flex;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #ad718b;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: clamp(38px, 9vw, 62px);
+  line-height: 1.1;
+  margin: 8px 0 15px;
+  color: #9b5879;
+}
+
+h2 {
+  font-size: clamp(29px, 7vw, 42px);
+  line-height: 1.2;
+  color: #9b5879;
+  margin: 8px 0 16px;
+}
+
+p {
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.subtitle {
+  max-width: 470px;
+  margin: 0 auto 22px;
+  color: #886b7e;
+}
+
+.card {
+  width: 100%;
+  max-width: 530px;
+  padding: 28px 24px;
+  margin: 12px auto;
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 26px;
+  background: rgba(255,255,255,.69);
+  box-shadow: 0 15px 45px rgba(153, 95, 125, .13);
+  backdrop-filter: blur(12px);
+}
+
+.card.lavender {
+  background: linear-gradient(145deg, #fff, #f0e9ff);
+}
+
+.card.peach {
+  background: linear-gradient(145deg, #fffaf3, #ffe3d5);
+}
+
+.card.rose {
+  background: linear-gradient(145deg, #fff8fb, #ffe0e9);
+}
+
+.card.gold {
+  background: linear-gradient(145deg, #fffdf4, #fff0c9);
+}
+
+.big-icon {
+  font-size: 62px;
+  margin: 5px 0 12px;
+  display: inline-block;
+  animation: bob 3s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%,100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 23px;
+  border-radius: 30px;
+  margin: 7px;
+  color: white;
+  font-weight: 700;
+  background: linear-gradient(120deg, #d77c9c, #b58bdc);
+  box-shadow: 0 7px 18px rgba(180, 110, 153, .22);
+  transition: transform .2s, box-shadow .2s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(180, 110, 153, .3);
+}
+
+.btn.secondary {
+  color: #986a85;
+  background: rgba(255,255,255,.85);
+  border: 1px solid #f1c7d7;
+  box-shadow: none;
+}
+
+.btn.goldbtn {
+  background: linear-gradient(120deg, #d6a34d, #e6bf77);
+}
+
+.dots {
+  display: flex;
+  gap: 7px;
+  justify-content: center;
+  margin: 18px 0 0;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 20px;
+  background: #d9bfd0;
+  transition: .3s;
+}
+
+.dot.active {
+  width: 24px;
+  background: #c77e9d;
+}
+
+.flower-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.flower {
+  background: rgba(255,255,255,.8);
+  border: 1px solid #f4d9e3;
+  border-radius: 20px;
+  padding: 15px 10px;
+  min-width: 95px;
+  box-shadow: 0 8px 18px rgba(120,70,100,.08);
+  transition: .25s;
+}
+
+.flower:hover {
+  transform: translateY(-6px) rotate(-2deg);
+}
+
+.flower span {
+  display: block;
+  font-size: 34px;
+  margin-bottom: 5px;
+}
+
+.flower small {
+  font-size: 11px;
+  color: #9b6b84;
+}
+
+.message {
+  display: none;
+  padding: 15px;
+  margin-top: 12px;
+  border-radius: 17px;
+  background: rgba(255,255,255,.8);
+  color: #80566e;
+  animation: pageIn .4s ease both;
+}
+
+.message.show {
+  display: block;
+}
+
+.letter {
+  text-align: left;
+  line-height: 1.9;
+  font-size: 14px;
+  white-space: pre-line;
+  color: #78566c;
+}
+
+.letter strong {
+  color: #b36b8a;
+}
+
+.gift {
+  width: 130px;
+  height: 115px;
+  position: relative;
+  margin: 25px auto;
+  animation: bob 2.4s ease-in-out infinite;
+}
+
+.gift-box {
+  position: absolute;
+  width: 120px;
+  height: 78px;
+  bottom: 0;
+  left: 5px;
+  border-radius: 8px;
+  background: linear-gradient(120deg, #e99ab6, #d47e9e);
+  box-shadow: 0 12px 25px #b56d8b55;
+}
+
+.gift-box:before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 100%;
+  left: 49px;
+  background: #fff0d0;
+}
+
+.gift-lid {
+  position: absolute;
+  width: 132px;
+  height: 25px;
+  bottom: 70px;
+  left: -1px;
+  border-radius: 7px;
+  background: linear-gradient(120deg, #f4b5ca, #e78eae);
+  transform-origin: left bottom;
+  transition: .8s;
+  z-index: 2;
+}
+
+.gift-lid:before {
+  content: "🎀";
+  position: absolute;
+  font-size: 32px;
+  top: -27px;
+  left: 49px;
+}
+
+.gift.open .gift-lid {
+  transform: translateY(-45px) rotate(-22deg);
+}
+
+.gift.open {
+  animation: none;
+}
+
+.heart-burst {
+  font-size: 25px;
+  animation: burst .8s ease both;
+}
+
+@keyframes burst {
+  from { transform: scale(.2); opacity: 0; }
+  to { transform: scale(1.2); opacity: 1; }
+}
+
+.timeline {
+  text-align: left;
+  border-left: 2px solid #e4b3ca;
+  margin: 20px auto;
+  padding-left: 20px;
+  max-width: 430px;
+}
+
+.timeline-item {
+  position: relative;
+  margin: 18px 0;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.8);
+  box-shadow: 0 7px 20px #9b587912;
+}
+
+.timeline-item:before {
+  content: "♡";
+  position: absolute;
+  left: -31px;
+  top: 14px;
+  color: #c77e9d;
+  font-size: 18px;
+}
+
+.timeline-item strong {
+  color: #b16b8a;
+}
+
+.final-heart {
+  font-size: 65px;
+  animation: heartbeat 1.4s infinite;
+}
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  15% { transform: scale(1.18); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.12); }
+}
+
+#noBtn {
+  position: relative;
+}
+
+footer {
+  text-align: center;
+  font-size: 11px;
+  color: #a8879b;
+  padding: 15px 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<div id="sky"></div>
+<div id="floaties"></div>
+
+<main>
+
+<!-- PAGE 1: WELCOME -->
+<section class="page active" id="page1">
+  <div class="eyebrow">A little something for you</div>
+  <div class="big-icon">💌</div>
+  <h1>For Samar ♡</h1>
+  <p class="subtitle">
+    A tiny corner of the internet, made with care,
+    just for you.
+  </p>
+  <div class="card peach">
+    <div style="font-size:30px">🌷 ✨ 🌷</div>
+    <p>Some surprises are waiting inside...</p>
+    <button class="btn" onclick="nextPage()">Open your surprise ♡</button>
+  </div>
+  <div class="dots" id="dots1"></div>
+</section>
+
+<!-- PAGE 2: GIFT -->
+<section class="page" id="page2">
+  <div class="eyebrow">Surprise number one</div>
+  <h2>A little gift for you</h2>
+  <p class="subtitle">Tap the gift and see what's inside!</p>
+  <div class="card lavender">
+    <div class="gift" id="gift">
+      <div class="gift-lid"></div>
+      <div class="gift-box"></div>
+    </div>
+    <div id="giftMessage" class="message">
+      <div class="heart-burst">💗 ✨ 💗</div>
+      <h3>It's a little happiness!</h3>
+      <p>Because you deserve a sweet surprise today.</p>
+    </div>
+    <button class="btn" onclick="openGift()">Open the gift 🎁</button>
+  </div>
+  <button class="btn secondary" onclick="nextPage()">Next →</button>
+  <div class="dots" id="dots2"></div>
+</section>
+
+<!-- PAGE 3: FLOWERS -->
+<section class="page" id="page3">
+  <div class="eyebrow">Flowers for you</div>
+  <h2>A little flower garden 🌼</h2>
+  <p class="subtitle">Tap each flower to reveal a little message.</p>
+  <div class="flower-row">
+    <button class="flower" onclick="showFlower(0)">
+      <span>🌼</span><small>Marigold</small>
+    </button>
+    <button class="flower" onclick="showFlower(1)">
+      <span>🌺</span><small>Hibiscus</small>
+    </button>
+    <button class="flower" onclick="showFlower(2)">
+      <span>🌷</span><small>Tulip</small>
+    </button>
+    <button class="flower" onclick="showFlower(3)">
+      <span>🌻</span><small>Sunflower</small>
+    </button>
+  </div>
+  <div class="card rose">
+    <div id="flowerMessage">Choose a flower above! 🌸</div>
+  </div>
+  <button class="btn" onclick="nextPage()">Continue ♡</button>
+  <div class="dots" id="dots3"></div>
+</section>
+
+<!-- PAGE 4: LITTLE THINGS -->
+<section class="page" id="page4">
+  <div class="eyebrow">Little reminders</div>
+  <h2>Some things I hope for you</h2>
+  <p class="subtitle">A few wishes, wrapped in colourful cards.</p>
+  <div class="card peach">
+    <div style="font-size:36px">☀️</div>
+    <h3>Happy days</h3>
+    <p>May your days be filled with reasons to smile.</p>
+  </div>
+  <div class="card lavender">
+    <div style="font-size:36px">🌙</div>
+    <h3>Peaceful nights</h3>
+    <p>May you always find time to rest and feel calm.</p>
+  </div>
+  <div class="card gold">
+    <div style="font-size:36px">⭐</div>
+    <h3>Beautiful dreams</h3>
+    <p>May you keep growing and reach the goals you care about.</p>
+  </div>
+  <button class="btn" onclick="nextPage()">Next surprise →</button>
+  <div class="dots" id="dots4"></div>
+</section>
+
+<!-- PAGE 5: LETTER -->
+<section class="page" id="page5">
+  <div class="eyebrow">A little letter</div>
+  <h2>From me to you 💌</h2>
+  <div class="card rose">
+    <div class="letter">Baccha, main bahut khush hun that you are in my life. I know I have done many mistakes and bahut gabad, but I am grateful ki aapne meko ek aur chance di.
+
+You are the most perfect person I could ever get. I really am lucky that aap ho mere life mein.
+
+Is baar main tumse pyaar karna seekhna chahti hun, and I would love to do that.
+
+Always gonna be my mr. handsome. I hope ki hamesha aap khush rho and be successful and stress-free. Aapki life mein hamesha good things rhe. 💗</div>
+    <div style="text-align:right; margin-top:20px; font-size:24px">🌷</div>
+  </div>
+  <button class="btn" onclick="nextPage()">One more thing →</button>
+  <div class="dots" id="dots5"></div>
+</section>
+
+<!-- PAGE 6: MEMORY -->
+<section class="page" id="page6">
+  <div class="eyebrow">A little memory</div>
+  <h2>Our little beginning ✨</h2>
+  <div class="card lavender">
+    <div style="font-size:44px">📅 💗</div>
+    <h3>15 February</h3>
+    <p>
+      I know we haven't met each other in real life and
+      ham online long distance hai, par just know you are
+      important to me.
+    </p>
+    <p>
+      Aapse pehle mili thi on this date. Not sure if u
+      remember it was on 15 of Feb. Bahut unexpected
+      that hamara first meet, not as romantic, but maybe
+      universe has its way as u always said.
+    </p>
+    <p>Aap mere liye bahut special ho. ♡</p>
+  </div>
+  <button class="btn" onclick="nextPage()">Continue →</button>
+  <div class="dots" id="dots6"></div>
+</section>
+
+<!-- PAGE 7: INTERACTIVE QUESTION -->
+<section class="page" id="page7">
+  <div class="eyebrow">One tiny question</div>
+  <div class="big-icon">💗</div>
+  <h2>Will you accept this little surprise?</h2>
+  <p class="subtitle">Choose your answer, Samar! 🌷</p>
+  <div class="card peach">
+    <button class="btn" onclick="yesClicked()">YES! 💖</button>
+    <button class="btn secondary" id="noBtn" onclick="noClicked()">No 🙈</button>
+    <div id="answerMessage" class="message"></div>
+  </div>
+  <div class="dots" id="dots7"></div>
+</section>
+
+<!-- PAGE 8: CELEBRATION -->
+<section class="page" id="page8">
+  <div class="eyebrow">Yay! A little celebration</div>
+  <div class="big-icon">🎉</div>
+  <h2>Surprise accepted!</h2>
+  <div class="card gold">
+    <div class="heart-burst" style="font-size:40px">💗 🌼 🌺 💗</div>
+    <p>Sending you a little bundle of happiness and flowers!</p>
+    <p>Hope this made you smile. ✨</p>
+  </div>
+  <button class="btn" onclick="nextPage()">Last page ♡</button>
+  <div class="dots" id="dots8"></div>
+</section>
+
+<!-- PAGE 9: FINAL -->
+<section class="page" id="page9">
+  <div class="eyebrow">One last thing</div>
+  <div class="final-heart">💗</div>
+  <h1>Thank you, Samar</h1>
+  <div class="card rose">
+    <p>
+      I hope this little website brought a smile to your face.
+      Take care of yourself, keep smiling, and never forget
+      how special you are.
+    </p>
+    <p style="font-size:26px; color:#bd7393">🌷 🌼 🌺</p>
+    <h2 style="font-size:30px">Never ♡</h2>
+  </div>
+  <button class="btn secondary" onclick="goTo(1)">Replay from the beginning ↺</button>
+  <div class="dots" id="dots9"></div>
+</section>
+
+<footer>Made with care ♡</footer>
+</main>
+
+<script>
+let currentPage = 1;
+const totalPages = 9;
+
+function goTo(n) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page' + n).classList.add('active');
+  currentPage = n;
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  updateDots();
+}
+
+function nextPage() {
+  if (currentPage < totalPages) goTo(currentPage + 1);
+}
+
+function updateDots() {
+  document.querySelectorAll('.dots').forEach(container => {
+    container.innerHTML = '';
+    for (let i = 1; i <= totalPages; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'dot' + (i === currentPage ? ' active' : '');
+      container.appendChild(dot);
+    }
+  });
+}
+
+function openGift() {
+  document.getElementById('gift').classList.add('open');
+  document.getElementById('giftMessage').classList.add('show');
+  burstHearts();
+}
+
+const flowerMessages = [
+  "A marigold for a little sunshine in your day. 🌼",
+  "A hibiscus for a colourful and happy day. 🌺",
+  "A tulip for all the lovely little moments. 🌷",
+  "A sunflower to remind you to keep shining. 🌻"
+];
+
+function showFlower(index) {
+  const box = document.getElementById('flowerMessage');
+  box.innerHTML = flowerMessages[index];
+  box.classList.remove('show');
+  void box.offsetWidth;
+  box.classList.add('show');
+}
+
+function yesClicked() {
+  document.getElementById('answerMessage').innerHTML =
+    "YAY! Here's a little celebration just for you! 💖✨";
+  document.getElementById('answerMessage').classList.add('show');
+  setTimeout(() => goTo(8), 1200);
+  burstHearts();
+}
+
+function noClicked() {
+  const btn = document.getElementById('noBtn');
+  const x = Math.random() * 130 - 65;
+  const y = Math.random() * 70 - 35;
+  btn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+function burstHearts() {
+  for (let i = 0; i < 16; i++) {
+    const heart = document.createElement('span');
+    heart.textContent = ['💗','💕','✨','💖'][Math.floor(Math.random()*4)];
+    heart.style.position = 'fixed';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.bottom = '-35px';
+    heart.style.fontSize = (16 + Math.random() * 20) + 'px';
+    heart.style.pointerEvents = 'none';
+    heart.style.zIndex = '10';
+    heart.style.transition = 'transform 2s ease, opacity 2s ease';
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.style.transform = `translateY(-${window.innerHeight + 80}px) rotate(${Math.random()*180}deg)`;
+      heart.style.opacity = '0';
+    }, 30);
+
+    setTimeout(() => heart.remove(), 2200);
+  }
+}
+
+function createFloaties() {
+  const area = document.getElementById('floaties');
+  const icons = ['♡','✦','✧','💗','✨','🌸'];
+  for (let i = 0; i < 22; i++) {
+    const item = document.createElement('span');
+    item.className = 'floaty';
+    item.textContent = icons[Math.floor(Math.random() * icons.length)];
+    item.style.left = Math.random() * 100 + '%';
+    item.style.fontSize = (12 + Math.random() * 18) + 'px';
+    item.style.animationDuration = (9 + Math.random() * 13) + 's';
+    item.style.animationDelay = (-Math.random() * 20) + 's';
+    area.appendChild(item);
+  }
+}
+
+function createSparkles() {
+  const icons = ['✦','✧','·'];
+  for (let i = 0; i < 15; i++) {
+    const s = document.createElement('span');
+    s.className = 'sparkle';
+    s.textContent = icons[Math.floor(Math.random() * icons.length)];
+    s.style.left = Math.random() * 100 + 'vw';
+    s.style.top = Math.random() * 100 + 'vh';
+    s.style.fontSize = (10 + Math.random() * 12) + 'px';
+    s.style.color = ['#d9a45f','#d18ba8','#a995d9'][i % 3];
+    s.style.animationDelay = Math.random() * 3 + 's';
+    document.body.appendChild(s);
+  }
+}
+
+createFloaties();
+createSparkles();
+updateDots();
+</script>
+</body>
+</html>
